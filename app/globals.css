@@ -1,26 +1,88 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy: #0b1f3a;
+  --navy-deep: #071628;
+  --charcoal: #1a1a1a;
+  --steel: #6b7280;
+  --steel-light: #9ca3af;
+  --steel-muted: #e5e7eb;
+  --amber: #d97706;
+  --amber-deep: #b45309;
+  --surface: #f1f3f5;
+  --background: #f8f9fa;
+  --foreground: #1a1a1a;
 }
 
 @theme inline {
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-charcoal: var(--charcoal);
+  --color-steel: var(--steel);
+  --color-steel-light: var(--steel-light);
+  --color-steel-muted: var(--steel-muted);
+  --color-amber: var(--amber);
+  --color-amber-deep: var(--amber-deep);
+  --color-surface: var(--surface);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-ibm-plex);
+  --font-display: var(--font-barlow);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-ibm-plex), "IBM Plex Sans", sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--amber) 35%, transparent);
+  color: var(--charcoal);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes underline-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+.animate-hero-fade {
+  animation: hero-fade 0.9s ease-out both;
+}
+
+.animate-underline {
+  transform-origin: left;
+  animation: underline-grow 0.8s ease-out 0.3s both;
 }
